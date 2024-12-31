@@ -18,5 +18,4 @@ public class Words {
     private int makeRandomNumber() {
         return (int) (Math.random() * 100) % TXT_SIZE;
     }
-
 }

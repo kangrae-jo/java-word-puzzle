@@ -17,15 +17,11 @@ public class GameManager {
 
     public void startGame() {
         Words words = readDictionary();
-        String word = words.getOneWord();
-        showSuggestWord(word);
-        for (int i = 0; i < 3; i++) {
-            if (isCollect(inputView.inputAnswer(), word)) {
-                outputView.showCollect();
-                break;
-            }
-            outputView.showWrong();
-        }
+        do {
+            String word = words.getOneWord();
+            showSuggestWord(word);
+            tryAnswer(word);
+        } while (askRestart());
     }
 
     private Words readDictionary() {
@@ -36,7 +32,22 @@ public class GameManager {
         outputView.showSuggestWord(word);
     }
 
+    private void tryAnswer(String word) {
+        for (int i = 0; i < 3; i++) {
+            if (isCollect(inputView.inputAnswer(), word)) {
+                outputView.showCollect();
+                break;
+            }
+            outputView.showWrong();
+        }
+    }
+
     private boolean isCollect(String answer, String word) {
         return answer.equals(word);
+    }
+
+    private boolean askRestart() {
+        String answer = inputView.askRestart();
+        return answer.equals("y") || answer.equals("Y");
     }
 }

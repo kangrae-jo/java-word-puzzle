@@ -15,5 +15,4 @@ public class OutputView {
         System.out.println("정답이 아닙니다.\n");
 
     }
-
 }
