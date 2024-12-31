@@ -1,7 +1,9 @@
 package wordpuzzle.controller;
 
 import wordpuzzle.model.DictionaryReader;
+import wordpuzzle.model.MixWord;
 import wordpuzzle.model.Words;
+import wordpuzzle.util.Console;
 import wordpuzzle.view.InputView;
 import wordpuzzle.view.OutputView;
 
@@ -19,9 +21,10 @@ public class GameManager {
         Words words = readDictionary();
         do {
             String word = words.getOneWord();
-            showSuggestWord(word);
+            showSuggestWord(MixWord.mixWord(word));
             tryAnswer(word);
         } while (askRestart());
+        Console.close();
     }
 
     private Words readDictionary() {
