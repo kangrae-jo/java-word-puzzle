@@ -5,13 +5,13 @@ import java.util.List;
 public class Words {
 
     private static final int TXT_SIZE = 26;
-    private final List<Word> words;
+    private final List<String> words;
 
-    public Words(List<Word> words) {
+    public Words(List<String> words) {
         this.words = words;
     }
 
-    public Word getOneWord() {
+    public String getOneWord() {
         return words.get(makeRandomNumber());
     }
 
