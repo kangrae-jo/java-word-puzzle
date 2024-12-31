@@ -17,14 +17,26 @@ public class GameManager {
 
     public void startGame() {
         Words words = readDictionary();
-        showSuggestWord(words);
+        String word = words.getOneWord();
+        showSuggestWord(word);
+        for (int i = 0; i < 3; i++) {
+            if (isCollect(inputView.inputAnswer(), word)) {
+                outputView.showCollect();
+                break;
+            }
+            outputView.showWrong();
+        }
     }
 
     private Words readDictionary() {
         return new Words(DictionaryReader.readDictionary());
     }
 
-    private void showSuggestWord(Words words) {
-        outputView.showSuggestWord(words.getOneWord());
+    private void showSuggestWord(String word) {
+        outputView.showSuggestWord(word);
+    }
+
+    private boolean isCollect(String answer, String word) {
+        return answer.equals(word);
     }
 }
