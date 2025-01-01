@@ -9,6 +9,7 @@ import wordpuzzle.view.OutputView;
 
 public class GameManager {
 
+    private static final int TRY_TIMES = 3;
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -36,7 +37,7 @@ public class GameManager {
     }
 
     private void tryAnswer(String word) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < TRY_TIMES; i++) {
             if (isCollect(inputView.inputAnswer(), word)) {
                 outputView.showCollect();
                 break;
